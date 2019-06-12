@@ -1393,7 +1393,7 @@ Just as the authentication for this set of endpoints is different, please note t
 <h2 id='create-a-hold'>Create a Hold</h2>
 <p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return a 200 response code, but no body.</p>
 
-<p>NOTE: When seting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for &quot;roomCountPerNight&quot; match the number of nights (inclusive) specified in the &quot;blockStartDate&quot; / &quot;blockEndDate&quot; range.</p>
+<p>NOTE: When setting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for &quot;roomCountPerNight&quot; match the number of nights (inclusive) specified in the &quot;blockStartDate&quot; / &quot;blockEndDate&quot; range.</p>
 
 <p>For instance, if the &quot;blockStartDate&quot; = &quot;12/01/2019&quot; and the &quot;blockEndDate&quot; = &quot;12/03/2019&quot;, the &quot;roomCountPerNight&quot; should have 3 values, like &quot;1,1,1&quot;.  </p>
 
@@ -1403,9 +1403,9 @@ Just as the authentication for this set of endpoints is different, please note t
 -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>There will be no response from the server if the hold is successful other than a 200 OK status header.</p>
 </blockquote>
-<pre class="highlight json tab-json"><code></code></pre><h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://groups.alliancereservations.com/services/external/roomtypesonhold</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
