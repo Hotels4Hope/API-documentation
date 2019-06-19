@@ -1391,7 +1391,7 @@ Just as the authentication for this set of endpoints is different, please note t
 `https://groups.alliancereservations.com/services/external` is the base path for this set of endpoints.
 </aside>
 <h2 id='create-a-hold'>Create a Hold</h2>
-<p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return a 200 response code, but no body.</p>
+<p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. </p>
 
 <p>NOTE: When setting the POST form-data Parameters (seen below), be sure the number of values in the comma separated list specified for &quot;roomCountPerNight&quot; match the number of nights (inclusive) specified in the &quot;blockStartDate&quot; / &quot;blockEndDate&quot; range.</p>
 
@@ -1403,9 +1403,50 @@ Just as the authentication for this set of endpoints is different, please note t
 -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
 </code></pre>
 <blockquote>
-<p>There will be no response from the server if the hold is successful other than a 200 OK status header.</p>
+<p>The above command returns JSON structured like this:</p>
 </blockquote>
-<h3 id='http-request'>HTTP Request</h3>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"SiteId"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EventId"</span><span class="p">:</span><span class="w"> </span><span class="mi">54321</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EventName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018 Test Event"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EventStartDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-01T00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"RoomTypeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">111111</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"PropertyInfoLink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://groups.alliancereservations.com/services/external/property?id=56789"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"King</span><span class="se">\r\n\r\n</span><span class="s2">This is a test room. Reservatinons will not be honored.</span><span class="se">\r\n\r\n</span><span class="s2">No breakfast included. Rate based on occupancy of 1 persons per room."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"GroupName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some new block description"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MaxOccupancy"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"BaseOccupancy"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"AdultExtraCharge"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ChildExtraCharge"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ExtraAdultAge"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ReleaseDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-01-17T00:00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"PaymentPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"CancellationPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancellation must be received 2 day(s) prior to day of arrival or will result in a penalty of 1 night's room plus tax"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Contacts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eddie Collins"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nobody@yahoo.com"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"DaytimePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"888-555-1212"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"EveningPhone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"IsPrimary"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"BlockDates"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"BlockDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-02T00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"MinimumNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"QuantityAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"BlockDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-03T00:00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"MinimumNights"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"QuantityAvailable"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://groups.alliancereservations.com/services/external/roomtypesonhold</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
