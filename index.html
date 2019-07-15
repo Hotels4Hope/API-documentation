@@ -1765,14 +1765,18 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 
 <p>When creating a reservation, use this mapping to find the appropriate values to use for these required parameters:</p>
 
+<aside class="notice">
+All values are based on the Detail response and have a starting point of `ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room`
+</aside>
+
 <ul>
-<li><strong><code>roomCostPrice</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.NightlyRate@Price</code></li>
-<li><strong><code>roomCostTaxAmount</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.Tax@Amount</code></li>
-<li><strong><code>roomCostGatewayFee</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.GatewayFee@Amount</code></li>
-<li><strong><code>roomCostTotalAmount</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.Total@Amount</code></li>
-<li><strong><code>roomCostCurrencyCode</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room@CurrencyCode</code></li>
-<li><strong><code>bookingFeeAmount</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.BookingFee@Amount</code></li>
-<li><strong><code>bookingFeeCurrencyCode</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.BookingFee@CurrencyCode</code></li>
+<li><strong><code>roomCostPrice</code></strong>: <code>NightlyRate@Price</code></li>
+<li><strong><code>roomCostTaxAmount</code></strong>: <code>Tax@Amount</code></li>
+<li><strong><code>roomCostGatewayFee</code></strong>: <code>GatewayFee@Amount</code></li>
+<li><strong><code>roomCostTotalAmount</code></strong>: <code>Total@Amount</code></li>
+<li><strong><code>roomCostCurrencyCode</code></strong>: <code>@CurrencyCode</code></li>
+<li><strong><code>bookingFeeAmount</code></strong>: <code>BookingFee@Amount</code></li>
+<li><strong><code>bookingFeeCurrencyCode</code></strong>: <code>BookingFee@CurrencyCode</code></li>
 </ul>
 <h2 id='availability-search'>Availability Search</h2>
 <p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
