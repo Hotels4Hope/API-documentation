@@ -305,8 +305,11 @@
               </ul>
           </li>
           <li>
-            <a href="#hotels-and-availability" class="toc-h1 toc-link" data-title="Hotels and Availability">Hotels and Availability</a>
+            <a href="#hotels-and-availability" class="toc-h1 toc-link" data-title="Hotels and availability">Hotels and availability</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#workflow-overview" class="toc-h2 toc-link" data-title="Workflow Overview">Workflow Overview</a>
+                  </li>
                   <li>
                     <a href="#availability-search" class="toc-h2 toc-link" data-title="Availability Search">Availability Search</a>
                   </li>
@@ -1733,7 +1736,45 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 <td>Reason for cancellation</td>
 </tr>
 </tbody></table>
-<h1 id='hotels-and-availability'>Hotels and Availability</h1><h2 id='availability-search'>Availability Search</h2>
+<h1 id='hotels-and-availability'>Hotels and availability</h1><h2 id='workflow-overview'>Workflow Overview</h2><h3 id='creating-a-reservation'>Creating a reservation</h3>
+<p>This is the typical workflow for creating a reservation. Each step contains information you will need to create the reservation. These steps exist by design to reduce fraud.</p>
+
+<ol>
+<li>Get available inventory using an <a href="#availability-search">Availability Search</a></li>
+<li><a href="#hotel-detail">Get inventory details</a></li>
+<li><a href="#hotel-reservation-creation">Create a Reservation</a> based on details</li>
+</ol>
+<h3 id='creating-a-reservation-using-a-hold'>Creating a reservation using a hold</h3>
+<p><a href="#inventory-on-hold">Inventory on hold</a> is only useful only for that inventory which is RFP&#39;d and contracted using our Groups application.  It does not pertain to GDS, OTA, or any other type of inventory other than that which you contract and load into the Groups app.</p>
+
+<ol>
+<li>Add contracted inventory to the Groups app (RFP and accept a bid). <em>This is a pre-requisite manual step. All other steps can be done with this API.</em></li>
+<li>Get available inventory using an <a href="#availability-search">Availability Search</a></li>
+<li><a href="#create-a-hold">Create a Hold</a> based on search results</li>
+<li><a href="#hotel-detail">Get inventory details</a></li>
+<li><a href="#hotel-reservation-creation">Create a Reservation</a> based on details</li>
+</ol>
+
+<p>Optionally, you may want to be able to <a href="#cancel-hold">cancel/expire a Hold</a> and/or <a href="#cancel-reservation">cancel a Reservation</a>.</p>
+<h3 id='common-terms-in-this-section'>Common terms in this section</h3>
+<ul>
+<li><strong><code>RoomTypeId</code> = <code>RoomCode</code></strong>: The ID associated with a room type (as seen in Hold responses and Detail request params).</li>
+<li><strong><code>RatePlanCode</code></strong>: &quot;ARN&quot; + <code>RoomTypeId</code> (string concatenation) (as seen when creating a Reservation and Detail request params)</li>
+<li><strong><code>HotelId</code> = <code>PropertyId</code></strong>: These terms are synonmous (as seen in Availability Search responses, Detail responses, and used in a comma separated value list for the <code>hotelids</code> parameter value in a Detail request). You may also use these values to look up more details on an individual property using the Property Detail call.</li>
+</ul>
+
+<p>When creating a reservation, use this mapping to find the appropriate values to use for these required parameters:</p>
+
+<ul>
+<li><strong><code>roomCostPrice</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.NightlyRate@Price</code></li>
+<li><strong><code>roomCostTaxAmount</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.Tax@Amount</code></li>
+<li><strong><code>roomCostGatewayFee</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.GatewayFee@Amount</code></li>
+<li><strong><code>roomCostTotalAmount</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.Total@Amount</code></li>
+<li><strong><code>roomCostCurrencyCode</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room@CurrencyCode</code></li>
+<li><strong><code>bookingFeeAmount</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.BookingFee@Amount</code></li>
+<li><strong><code>bookingFeeCurrencyCode</code></strong>: <code>ArnResponse.RateDetails.HotelRateDetails.Hotel.RatePlan.Room.BookingFee@CurrencyCode</code></li>
+</ul>
+<h2 id='availability-search'>Availability Search</h2>
 <p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
 
 <p>Make this request for the total number of rooms and the total number of guests.  The response will return a maximum of 50 hotels per request, thus you must use pagination techniques if you need more than 50. That said, 50 is the maximum but may not be the best performing. Use smaller batches to get faster responses.</p>
