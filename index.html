@@ -251,10 +251,13 @@
                     <a href="#propertytypes" class="toc-h2 toc-link" data-title="propertyTypes"><code>propertyTypes</code></a>
                   </li>
                   <li>
-                    <a href="#roomcode" class="toc-h2 toc-link" data-title="roomCode"><code>roomCode</code></a>
+                    <a href="#roomcode-roomtypeid" class="toc-h2 toc-link" data-title="roomCode / roomTypeId"><code>roomCode</code> / <code>roomTypeId</code></a>
                   </li>
                   <li>
                     <a href="#rateplancode" class="toc-h2 toc-link" data-title="ratePlanCode"><code>ratePlanCode</code></a>
+                  </li>
+                  <li>
+                    <a href="#hotelid-propertyid" class="toc-h2 toc-link" data-title="HotelId / PropertyID"><code>HotelId</code> / <code>PropertyID</code></a>
                   </li>
               </ul>
           </li>
@@ -500,10 +503,14 @@ If you use our portal's UI and wanted to link directly to a particuilar page wit
 <td>Vacation rental</td>
 </tr>
 </tbody></table>
-<h2 id='roomcode'><code>roomCode</code></h2>
-<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room.@Code</code> value specified in the Availability Search results for the room type you are interested.</p>
+<h2 id='roomcode-roomtypeid'><code>roomCode</code> / <code>roomTypeId</code></h2>
+<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.Room@Code</code> value specified in the Availability Search results for the room type you are interested.</p>
+
+<p>The terms <code>roomCode</code> and <code>roomTypeId</code> are synonymous.</p>
 <h2 id='rateplancode'><code>ratePlanCode</code></h2>
-<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan.@Code</code> value specified in the Availability Search results for the rate plan you are interested in.</p>
+<p>This is the <code>ArnResponse.Availability.HotelAvailability.Hotel.RatePlan@Code</code> value specified in the Availability Search results for the rate plan you are interested in.  It&#39;s simply the <code>roomCode</code> / <code>roomTypeId</code> with a prefixed &quot;ARN&quot; string in front of it.</p>
+<h2 id='hotelid-propertyid'><code>HotelId</code> / <code>PropertyID</code></h2>
+<p>These two terms and their values are synonymous.  You may use the values of these properties in a resulting <code>hotelids</code> parameter (comma-delimited).</p>
 <h1 id='closed-user-groups'>Closed user groups</h1>
 <p>This section is only for those using the SSO Authentication feature and pertains to managing users and their authentication tokens.  </p>
 
@@ -576,18 +583,6 @@ The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. 
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
@@ -1078,18 +1073,6 @@ If the code already exists this call will update the info as provided.
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
@@ -1239,18 +1222,6 @@ Notice the `type=get`, which is the difference between this endpoint call and th
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
@@ -1333,18 +1304,6 @@ Notice the `type=redeem`, which is the difference between this endpoint call and
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
@@ -1679,7 +1638,7 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 </tr>
 </tbody></table>
 <h2 id='cancel-a-hold'>Cancel a Hold</h2>
-<p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. Calling this endpoint successfully will return a 200 response code, but no body.</p>
+<p>You may retrieve a list of the room types (you&#39;ll need the room code / room type id) available to put on hold via an Availability Search and specifying gateway <code>16</code> (contracted inventory) (authorized, as mentioned above, using a basic authentication header) to this endpoint. <strong>IMPORTANT NOTE:</strong> Calling this endpoint successfully will return a string (URL), not JSON-encoded.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
 <span class="s2">"https://groups.alliancereservations.com/services/external/roomtypesonhold?&amp;roomTypeId={ROOM-TYPE-ID}&amp;cancelHold"</span> <span class="se">\</span>
 -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span>
@@ -1902,18 +1861,6 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
@@ -1995,7 +1942,7 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 <td>children</td>
 <td>int</td>
 <td>Yes</td>
-<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter.</td>
+<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter. We suggest usually setting this to <code>0</code>.</td>
 </tr>
 <tr>
 <td>sortType</td>
@@ -2120,7 +2067,7 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 
 <p><strong>All fees, penalties, and policies from this response must be shown to the user before creating a reservation.</strong></p>
 
-<p>All room prices are based on the number of adults per room specified in the request.  A response containing an extra adult fee of <code>0</code> may simply mean the pricing is not available. Adding more than the specified number of adults to the room because the extra adult fee is <code>0</code> will likely incur a price difference when the guest arrives at the hotel. To avoid this, we advise not depend on the extra adult fee specified in the response when it comes to pricing.</p>
+<p>All room prices are based on the number of adults per room specified in the request.  A response containing an extra adult fee of <code>0</code> may simply mean the pricing is not available. Adding more than the specified number of adults to the room because the extra adult fee is <code>0</code> will likely incur a price difference when the guest arrives at the hotel. To avoid this, we advise not to depend on the extra adult fee specified in the response when it comes to pricing.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;hotelIds=272393</span><span class="se">\</span><span class="s2">
@@ -2131,7 +2078,7 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 &amp;adults=2</span><span class="se">\</span><span class="s2">
 &amp;children=0</span><span class="se">\</span><span class="s2">
 &amp;gateway=51</span><span class="se">\</span><span class="s2">
-&amp;ratePlanCode=F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935</span><span class="se">\</span><span class="s2">
+&amp;ratePlanCode=987654321</span><span class="se">\</span><span class="s2">
 &amp;roomCode=HRLM--_eJwFwcuaczAAANAHmgVRCRaziPRvxkyJadx3biWUfkFH9On_fc5BTlaYBzSSx4m6Iwz3cS_pRnKxCtkQzjqPQZm8Lh771NInUK3ri_pDYTzZL6lQtgl0H0_fOj_f5dRd1kT_pX8dtg_pq0LMTJYHFXNuPqi0PxdLuTjEAeTtKNfYZ3Gd3suIjMbm3_prdXk03gvS_pfpUJnL_poCL9kNoyIlpA2DURM1_fqAtELSKYuKh6e248vaSGk9hE9Dns4MYIncb5jC_fcZG_p_fOeSN3Z0N_fib2UqSpSLCPFgqPX2sQTP9rmXEv_ptXOMVOlVLoC_fujzlUz6tJvvFwUEonyP6njavHdzsVVF2EesNGSmILz3twKMBKm_fp7PK2XCcgV8ghjMc93ZaXrLkm622zmAYaTaPSItlgfYOcO2TSZ6hvwXlxw_fSAVdl9fv4Hwe6AJQ</span><span class="se">\</span><span class="s2">
 &amp;ipAddress=127.0.0.1</span><span class="se">\</span><span class="s2">
 &amp;userAgent=shell</span><span class="se">\</span><span class="s2">
@@ -2178,14 +2125,14 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
           </span><span class="s2">"@PriceClass"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 Stars"</span><span class="w">
           </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F89648494F22FFE25A254AD1CE7D18FD27B862F1A609BD28872D9CD6DDA2E956B160BE3DB7EB0191B160BE3DB7EB01917EA3048807BEE935"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN987654321"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Best Available"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@BuyerOnly"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@CommissionStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Commissionable"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@BalanceDueAtHotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard room"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"- 1 King Bed - Nonsmoking Room - Free Breakfast, Free Wifi, Fridge, Microwave"</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -2240,18 +2187,6 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
@@ -2366,9 +2301,9 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 &amp;inDate=2007-03-30</span><span class="se">\</span><span class="s2">
 &amp;outDate=2007-03-31</span><span class="se">\</span><span class="s2">
 &amp;adults=2</span><span class="se">\</span><span class="s2">
-&amp;children=1</span><span class="se">\</span><span class="s2">
-&amp;ratePlanCode=AAA</span><span class="se">\</span><span class="s2">
-&amp;roomCode=Z303AAA</span><span class="se">\</span><span class="s2">
+&amp;children=0</span><span class="se">\</span><span class="s2">
+&amp;ratePlanCode=ARN987654321</span><span class="se">\</span><span class="s2">
+&amp;roomCode=987654321</span><span class="se">\</span><span class="s2">
 &amp;guestFirstName=Eddie</span><span class="se">\</span><span class="s2">
 &amp;guestLastName=Collins</span><span class="se">\</span><span class="s2">
 &amp;guestEmail=nobody@yahoo.com</span><span class="se">\</span><span class="s2">
@@ -2386,9 +2321,9 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 &amp;roomCostGatewayFee=0.00</span><span class="se">\</span><span class="s2">
 &amp;roomCostTotalAmount=103.95</span><span class="se">\</span><span class="s2">
 &amp;roomCostCurrencyCode=USD</span><span class="se">\</span><span class="s2">
-&amp;creditCardType=VISA</span><span class="se">\</span><span class="s2">
+&amp;creditCardType=VI</span><span class="se">\</span><span class="s2">
 &amp;creditCardNumber=4242424242424242</span><span class="se">\</span><span class="s2">
-&amp;creditCardExpiration=2018-12</span><span class="se">\</span><span class="s2">
+&amp;creditCardExpiration=01/21</span><span class="se">\</span><span class="s2">
 &amp;creditCardCVV2=123</span><span class="se">\</span><span class="s2">
 &amp;creditCardHolder=Eddie Collins</span><span class="se">\</span><span class="s2">
 &amp;creditCardAddress=123 Main Street</span><span class="se">\</span><span class="s2">
@@ -2432,11 +2367,11 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
         </span><span class="s2">"Hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"@HotelID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10731"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN987654321"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Z303AAA"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Room"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QUALIFYING MEMBER RATE: Aaa/CAA Rate 1 King Bed /1 Room Suite/Partial Room Divider /Microwave Refrigerator/Computer Hookup Guest Must Show Some Form Of Aaa Membership Rate Is Applicable To AAA Members Only And Only On Rooms They Stay In Themselv"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -2615,18 +2550,6 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 </tr>
 </thead><tbody>
 <tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
 <td>siteid</td>
 <td>integer</td>
 <td>Yes</td>
@@ -2672,7 +2595,7 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 <td>children</td>
 <td>int</td>
 <td>Yes</td>
-<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter.</td>
+<td>Total number of children. Maximum: 8. Note: Some legacy providers do not honor the <code>children</code> parameter. We suggest setting this value to <code>0</code> for most inquiries.</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -2825,10 +2748,16 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 <td>See below.</td>
 </tr>
 <tr>
+<td>bookingFeeCurrencyCode</td>
+<td>string</td>
+<td>See common value map for <code>currency</code>.</td>
+<td></td>
+</tr>
+<tr>
 <td>creditCardType</td>
 <td>string</td>
 <td>Yes</td>
-<td>Credit card type (&quot;AMEX&quot;, &quot;MasterCard&quot;, &quot;VISA&quot;, etc.)</td>
+<td>Options: &quot;AX&quot; (AMEX), &quot;CA&quot; (MasterCard), &quot;VI&quot; (Visa), &quot;DC&quot; (Discover)</td>
 </tr>
 <tr>
 <td>creditCardNumber</td>
@@ -2840,7 +2769,7 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 <td>creditCardExpiration</td>
 <td>string</td>
 <td>Yes</td>
-<td>Credit card expiration date (format: <code>YYYY-MM</code>)</td>
+<td>Credit card expiration date (format: <code>MM/YY</code>)</td>
 </tr>
 <tr>
 <td>creditCardCVV2</td>
@@ -2930,7 +2859,7 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 <h4 id='bookingfeeamount'><code>bookingFeeAmount</code></h4>
 <p>Send the exact same information received from the Hotel Detail Request (assuming the same <code>currency</code> designation in both requests. This is used to assure the expected reservation amounts match the actual prices the hotel has given.</p>
 <h2 id='hotel-reservation-cancellation'>Hotel Reservation Cancellation</h2>
-<p>To cancel a reservation you will need the <code>reservationId</code> and <code>itineraryId</code> returned in the reservation creation response.</p>
+<p>To cancel a reservation you will need the <code>reservationId</code> and <code>itineraryId</code> returned in the reservation creation response.  These values are mapped 1-to-1, so both are needed and they likely will not be the same values, but will be related to each other.</p>
 <pre class="highlight shell tab-shell"><code>curl -X POST <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
 &amp;reservationId=915892</span><span class="se">\</span><span class="s2">
@@ -2973,11 +2902,11 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
         </span><span class="s2">"Hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"@HotelID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"219295"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"RatePlan"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ARN987654321"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internet Special"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"@Gateway"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Room"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3979"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"@Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double Room"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@Description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Double Room - one double bed, satellite television, minibar, coffee maker, in-room safe, work desk, air conditioning, hairdryer, private bathroom, complimentary breakfast buffet. Rate includes transportation from the airport to the hotel. Please enter your Airline and Flight Number in the 'Other Special Requests' field when placing your reservation. Rates based on single or double occupancy. (Maximum 2 people)"</span><span class="p">,</span><span class="w">
               </span><span class="s2">"@CurrencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
@@ -3161,18 +3090,6 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 <th>Description</th>
 </tr>
 </thead><tbody>
-<tr>
-<td>username</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
-<tr>
-<td>password</td>
-<td>string</td>
-<td>Yes</td>
-<td>Provided by Hotels For Hope</td>
-</tr>
 <tr>
 <td>siteid</td>
 <td>integer</td>
