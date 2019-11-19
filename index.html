@@ -714,7 +714,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>ReferralId</td>
 <td>string</td>
 <td>Yes</td>
-<td>The email address of the user (used as the &quot;username&quot;)</td>
+<td>The id of the user in your system</td>
 </tr>
 <tr>
 <td>FirstName</td>
@@ -869,7 +869,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <td>ReferralId</td>
 <td>string</td>
 <td>Yes</td>
-<td>The email address of the user (used as the &quot;username&quot;)</td>
+<td>The id of the user in your system</td>
 </tr>
 <tr>
 <td>FirstName</td>
@@ -1731,10 +1731,6 @@ Either the `affiliateId` or `siteId` must be passsed into this endpoint.  This e
 <li><strong><code>bookingFeeCurrencyCode</code></strong>: <code>BookingFee@CurrencyCode</code></li>
 <li><strong><code>bookingFeeAmount</code></strong>: <code>BookingFee@Amount</code></li>
 </ul>
-
-<aside class="notice">
-    If returned, the `NightlyRate` discount is pre-tax discount from the pre-tax price. The `Total.Discount` is a post-tax discount from post-tax total.
-</aside>
 <h2 id='availability-search'>Availability Search</h2>
 <p>This endpoint retrieves all hotels which have availability for the dates and locations (or individual hotels) specified.</p>
 
@@ -1756,6 +1752,10 @@ If an availability search fails to return rates, we suggest not showing the hote
 
 <aside class="notice">
 For the `children` parameter, we always suggest sending in a value of "0". Many older GDS do not accept this parameter at all, and including it may return inconsistent pricing because of this.
+</aside>
+
+<aside class="notice">
+  If returned, the `NightlyRate` discount is pre-tax discount from the pre-tax price. The `Total.Discount` is a post-tax discount from post-tax total.
 </aside>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.travsrv.com/hotel.aspx?</span><span class="se">\</span><span class="s2">
 &amp;siteid={SITEID}</span><span class="se">\</span><span class="s2">
@@ -2039,6 +2039,10 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 ** <code>candidatesearch</code>: If a location based search is being made, this attribute can be sent to specify that no rates and availability should be returned. When set to true, and in conjunction with a location based search, only the list of candidate properties are returned (very fast). This allows calls to be made for each individual property asynchronously for actual rates and availability.</li>
 </ul>
 <h4 id='sorttype'><code>sortType</code></h4>
+<aside class="notice">
+  Note the `dealpercent` and `dealamount` sorting are related to historical discounts, not currently listed discounts.  You must sort the results of an availability search by the calculated percentage or given discount amount yourself after receiving the results of the query.
+</aside>
+
 <table><thead>
 <tr>
 <th>Sort Type</th>
@@ -2051,11 +2055,11 @@ For the `children` parameter, we always suggest sending in a value of "0". Many 
 </tr>
 <tr>
 <td><code>dealpercent</code></td>
-<td>Sorts the hotel results based on prices last seen and returns the best percentage savings we have found historically for the specified dates.</td>
+<td>Sorts the hotel results based on prices last seen and returns the best percentage savings we have found historically (not currently) for the specified dates.</td>
 </tr>
 <tr>
 <td><code>dealamount</code></td>
-<td>Sorts the hotel results based on prices last seen and returns the best amount savings we have found historically and for those dates.</td>
+<td>Sorts the hotel results based on prices last seen and returns the best amount savings we have found historically (not currently) and for those dates.</td>
 </tr>
 </tbody></table>
 <h2 id='hotel-detail'>Hotel Detail</h2>
