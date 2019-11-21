@@ -607,7 +607,7 @@ The token (`CurrentToken`) will be URI encoded to ensure a valid JSON response. 
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tester"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
@@ -632,7 +632,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
   -H <span class="s1">'Authorization: Basic {BASE64-ENCODED-STRING}'</span> <span class="se">\</span>
   -H <span class="s1">'Cache-Control: no-cache'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> <span class="se">\</span>
-  -d <span class="s1">'siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22mytestuser1%40gmail.com%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123%20Main%20Street%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
+  -d <span class="s1">'siteid={SITEID}&amp;token={ADMIN-TOKEN}&amp;memberData=%7B%22Points%22%3A100%2C%22Names%22%3A%5B%7B%22ReferralId%22%3A%22777%22%2C%22FirstName%22%3A%22Testme%22%2C%22LastName%22%3A%22Tester%22%2C%22Email%22%3A%22mytestuser1%40gmail.com%22%2C%22Address1%22%3A%22123%20Main%20Street%22%2C%22HomePhone%22%3A%225551231212%22%7D%5D%7D'</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -658,19 +658,19 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
         </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"UpdateMemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme Tester"</span><span class="w">
     </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful creation of Member RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful creation of Member RT-12345-777"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"CurrentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"TransactionResponse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MetaTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-777"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
@@ -758,7 +758,7 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"Points"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Names"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FirstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"LastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tester"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
@@ -813,19 +813,19 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
         </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"UpdateMemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme Tester"</span><span class="w">
     </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful Existing Member RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful Existing Member RT-12345-777"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"CurrentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPubiUEmc223Z4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWY3vMHyhlZQiW23z1a6lZReASYfMMycNfDUhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXKn83CdkKJDjeGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"TransactionResponse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MetaTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-777"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
@@ -945,19 +945,19 @@ The JSON structure includes an array of `Names`, which seems to infer the abilit
         </span><span class="s2">"Latitude"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"HomePhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5551231212"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Referral"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ReferralId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"777"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"Password"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="s2">"IsActive"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"DeleteMember"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"UpdateMemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="s2">"FullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Testme Tester"</span><span class="w">
     </span><span class="p">}],</span><span class="w">
-    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful creation of Member RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"DebugData"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Successful creation of Member RT-12345-777"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"CurrentToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E7MUlbdRdlq2RwSs8V4%2fhza25Xwca%2fZLodi%2faddmPl%2bJfpCU7VovYjoSKaMk34PvkSDpD1mqvezzQG0abXzuXP1%2baaiIKCLw7ehGaiI7BNI7Pb%2fYK%2fGJf4fCxKCz5EodA79iweA6gc2nCEOdWmkarTuy4Cd%2f5WtNkU043rF42sshCKGkg%2bIavKgJ6emdL7msPJRykM2hf%2fmHjdDOV%2b7jtuOHpk5bAVVIc5jhUqmqJMa5908EK0VoX1OUT60SkDcw2YLBeXEg6sYPu1Q7mTPc5VUhJ%2b6C6wHM08eOKMrKt6LNRxoB0kXcPyVS1azt1LR48yAegw%2fKXPbdgrCBycjsDedm0ItP9SmW1C6Byw4nt5zivxf%2f0ZIMF07wtZ4JhWVqGuhetKPDE3ddzOLRPyjNgetWddHqoq8Tba%2bKWDcIADYnqgH5NVdVSKvyH5VWYyhlZQiW23z1a6lZReASYfMMycNfDU2X4EhDOEa0tvUYajpsRlnDIkNcLjxT4KPyrZhl5tVsHECCY0Sasy%2f6zh9ce%2b3HE%2bOEtux%2bEHKfBWrkzwt1vpwyn%2fnXzVd%2bQumpQLw5DOZ2DltHZs%2bfmQ96MoMrBgSx8jS%2bQkR3NQjGAysUOqXK%2fAl38ryHzGe0nSeMkLo5BRYEgiEJK%2bftnZqsEQbZC98E8Fyt2zMGiofGQrR1i5v3gRoOCfqjNYJQAft4ru6GCR5kpm0CsvVvOnKmnA%3d%3d"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"TransactionResponse"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MetaTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-mytestuser1@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"MemberUsername"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT-12345-777"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"IsArnProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"MemberType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="w">
