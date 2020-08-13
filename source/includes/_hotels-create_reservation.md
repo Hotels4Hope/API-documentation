@@ -278,7 +278,7 @@ guestFirstName | string | Yes | Primary guest's first name
 guestLastName | string | Yes | Primary guest's last name.
 guestEmail | string | Yes | Primary guest's email address.
 guestPhoneCountry | string | Yes | Primary guest's phone number country code.
-guestPhoneArea | string | Yes | Primary guest's phone number area code. 
+guestPhoneArea | string | Yes | Primary guest's phone number area code.
 guestPhoneNumber | string | Yes | Primary guest's phone number (without country or area code)
 guestPhoneExtension | string | No | Primary guest's phone number extension.
 guestMessage | string | No | Guest special requests.

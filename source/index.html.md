@@ -1125,7 +1125,7 @@ username={API-USERNAME}\
 &bookingFeeAmount=5.00\
 &creditCardType=VISA\
 &creditCardNumber=4242424242424242\
-&creditCardExpiration=2018-12\
+&creditCardExpiration=01/21\
 &creditCardCVV2=123\
 &creditCardHolder=Eddie Collins\
 &creditCardCity=Detroit\
@@ -1384,9 +1384,10 @@ roomCostGatewayFee | decimal | Yes | See below.
 roomCostTotalAmount | decimal | Yes | See below.
 roomCostCurrencyCode | string | Yes | See below.
 bookingFeeAmount | decimal | Yes | See below.
+bookingFeeCurrencyCode | string | See common value map for `currency`.
 creditCardType | string | Yes | Options: "AX" (AMEX), "CA" (MasterCard), "VI" (Visa), "DC" (Discover)
 creditCardNumber | string | Yes | Credit card number.
-creditCardExpiration | string | Yes | Credit card expiration date (format: `YYYY-MM`)
+creditCardExpiration | string | Yes | Credit card expiration date (format: `MM/YY`)
 creditCardCVV2 | int | Yes | Credit card CVV2 number.
 creditCardHolder | string | Yes | Name on credit card.
 creditCardAddress | string | Yes | Credit card billing address.
